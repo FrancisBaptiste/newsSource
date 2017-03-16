@@ -33,8 +33,11 @@ $websites["24hrs News Vancouver"] = "http://vancouver.24hrs.ca";
 $websites["Metro News Vancouver"] = "http://www.metronews.ca/vancouver.html";
 
 
+//create our first newsSource object
 $scoutMagazine = new newsSource();
 
+//I know I should be using getters and setters
+// I'll make that change eventually
 $scoutMagazine->publisher = "Scout Magazine";
 $scoutMagazine->url = "http://scoutmagazine.ca";
 $scoutMagazine->imgPath = "#scout-single-post-content img";
