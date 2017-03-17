@@ -8,9 +8,8 @@ ini_set('display_errors', 1);
 require("newsSource.php");
 
 //create an array of all the websites we want to pull content from
-
+/*
 $websites = array();
-
 $websites["Scout Magazine"] = "http://scoutmagazine.ca";
 $websites["Daily Hive Vancouver"] = "http://dailyhive.com/vancouver";
 $websites["VancouverIsAwesome"] = "http://vancouverisawesome.com";
@@ -31,6 +30,31 @@ $websites["Vancouver Bits and Bites"] = "https://maryinvancity.com";
 $websites["Pangcouver"] = "http://www.pangcouver.com";
 $websites["24hrs News Vancouver"] = "http://vancouver.24hrs.ca";
 $websites["Metro News Vancouver"] = "http://www.metronews.ca/vancouver.html";
+*/
+
+$websites = array(
+		"Scout Magazine" 		=> "http://scoutmagazine.ca",
+		"Daily Hive Vancouver" 	=> "http://dailyhive.com/vancouver",
+		"VancouverIsAwesome"	=> "http://vancouverisawesome.com",
+		"Inside Vancouver"		=> "http://www.insidevancouver.ca",
+		"The Growler"			=> "http://www.thegrowler.ca",
+		"Hello Vancity"			=> "http://www.hellovancity.com",
+		"The Snipe"				=> "http://www.thesnipenews.com",
+		"Vancouver Foodster"	=> "http://vancouverfoodster.com",
+		"Bored in Vancouver"	=> "http://boredinvancouver.com/blog",
+		"Westender"				=> "http://www.westender.com",
+		"Miss 604"				=> "http://604now.com",
+		"604 Now"				=> "http://604now.com",
+		"Vancouverscape"		=> "http://vancouverscape.com",
+		"Business In Vancouver" =>	"https://www.biv.com",
+		"Georgia Straight"		=> "http://www.straight.com",
+		"Vancouver Observer"	=> "http://modernmixvancouver.com",
+		"Vancouver Slop"		=> "http://www.vancouverslop.com",
+		"Vancouver Bits and Bites" => "https://maryinvancity.com",
+		"Pangcouver"			=> "http://www.pangcouver.com",
+		"24hrs News Vancouver"	=> "http://vancouver.24hrs.ca",
+		"Metro News Vancouver"	=> "http://www.metronews.ca/vancouver.html"
+);
 
 
 //create our first newsSource object
