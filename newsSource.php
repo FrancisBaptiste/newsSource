@@ -3,7 +3,6 @@
 require("simple_html_dom.php");
 require("simpleImage.php");
 
-
 class newsSource {
 
 	//setting all the properties
@@ -11,21 +10,33 @@ class newsSource {
 	public $publisher;
 	public $url;
 	public $imgPath;
-	public $imgPathIndex = 0;
+	public $imgPathIndex ;
 	public $headlinePath;
 	public $contentPath;
-	public $contentPathIndex = 0;
+	public $contentPathIndex;
 	public $datePath;
 
+	//set up an init function that will set all our properties right off the bat
+	public function __construct($publisher, $url, $imgPath, $imgPathIndex = 0, $headlinePath, $contentPath, $contentPathIndex = 0, $datePath){
+		$this->publisher = $publisher;
+		$this->url = $url;
+		$this->imgPath = $imgPath;
+		$this->imgPathIndex = $imgPathIndex;
+		$this->headlinePath = $headlinePath;
+		$this->contentPath = $contentPath;
+		$this->contentPathIndex = $contentPathIndex;
+		$this->datePath = $datePath;
+	}
+
 	//This is the main method for getting the article content
-	public function getArticleAt($elementPath){
+	public function getArticleAt($elementPath, $pathIndex = 0){
 
 		//we use the url property to get the homepage html
 		$html = file_get_html($this->url);
 
-		//if there is something int he array at this element path, then grab the first item
-		if( count($html->find($elementPath)) > 0){
-			$articleLinkEnd = $html->find($elementPath)[0]->href;
+		//get the link at the approprate path and index
+		if( $html->find($elementPath, $pathIndex) ){
+			$articleLinkEnd = $html->find($elementPath, $pathIndex)->href;
 		}else{
 			//if we find nothing, return false and end this method
 			return false;
