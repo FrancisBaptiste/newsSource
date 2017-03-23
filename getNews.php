@@ -9,6 +9,8 @@ ini_set('display_errors', 1);
 
 //get the classes we need
 require("newsSource.php");
+//this file is ignored by git, so I'm not sharing my passwords with the world
+require("password.php");
 
 //this array isn't actually going to be used. it's just here for reference.
 $websites = array(
@@ -47,7 +49,57 @@ $scout = new newsSource(
 	"#scout-single-date"
 );
 
-$scout->getArticleAt("#scout-front-carousel .carousel-inner .item a", 0);
+//$scout->getArticleAt("#scout-front-carousel .carousel-inner .item a", 0);
 
 
 ?>
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Get News</title>
+		<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+		<script>
+		// Initialize Firebase
+		// TODO: Replace with your project's customized code snippet
+		var config = {
+		apiKey: "AIzaSyDcFGPa0xb1WPyXmM_A0dPL0zVvPwZffRI",
+		authDomain: "vancitynews.firebaseapp.com",
+		databaseURL: "https://vancitynews.firebaseio.com/"
+		};
+		firebase.initializeApp(config);
+
+		var database = firebase.database();
+
+
+		//sign in with my user account
+		firebase.auth().signInWithEmailAndPassword("<?php echo $userEmail; ?>", "<?php echo $password; ?>").catch(function(error) {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			alert("Couldn't sign in " + errorCode + " : " + errorMessage);
+		});
+
+		//get some data
+		firebase.database().ref('/newsSources/2').once('value').then(function(snapshot) {
+			//if there is nothing there, alert this message
+			if(snapshot.val() == null){
+				alert("There is no object here");
+			}else{
+				//if there is somethign there, alert the name value
+				var name = snapshot.val().name;
+				alert("TESTING... " + name);
+			}
+
+		});
+
+
+		</script>
+
+	</head>
+	<body>
+		<div id="test">na</div>
+	</body>
+</html>
